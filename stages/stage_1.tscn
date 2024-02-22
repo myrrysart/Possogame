@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://d137knd1hxjhj"]
+
+[ext_resource type="Texture2D" uid="uid://c66gr0kwk0hc4" path="res://art/pelikentta.png" id="1_cmn3t"]
+[ext_resource type="Script" path="res://scripts/ulkopaikkakuntalainen.gd" id="2_8ne84"]
+[ext_resource type="Texture2D" uid="uid://c7noqyu386kss" path="res://art/animated man.png" id="2_m0wy2"]
+[ext_resource type="Texture2D" uid="uid://30pb5x1fyw1t" path="res://art/animated man2.png" id="3_qoayl"]
+[ext_resource type="VideoStream" path="res://art/sample_960x400_ocean_with_audio.ogv" id="5_n0gfk"]
+[ext_resource type="PackedScene" uid="uid://cgugn3bf4jeqc" path="res://player.tscn" id="6_uyg60"]
+[ext_resource type="PackedScene" uid="uid://b7vwsvsnt3je8" path="res://control.tscn" id="7_ygy3l"]
+[ext_resource type="PackedScene" uid="uid://cfdb7xkf8780w" path="res://rat.tscn" id="8_d6t6x"]
+[ext_resource type="PackedScene" uid="uid://6oon1j2h6wjd" path="res://seagull.tscn" id="9_yfux2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkk4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m0wy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qoayl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s24kv"]
+size = Vector2(40, 72)
+
+[node name="stage1" type="StaticBody2D"]
+
+[node name="Pelikentta" type="Sprite2D" parent="."]
+position = Vector2(576, 288)
+scale = Vector2(1.43821, 1)
+texture = ExtResource("1_cmn3t")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 8)
+polygon = PackedVector2Array(4, -8, 36, 432, 56, 496, 112, 504, 216, 504, 236, 448, 316, 448, 404, 448, 428, 392, 492, 392, 556, 400, 604, 400, 660, 400, 848, 408, 872, 352, 1120, 352, 1144, 16, 1152, 552, 0, 552)
+
+[node name="ulkopaikkakuntalainen" type="Area2D" parent="."]
+disable_mode = 2
+script = ExtResource("2_8ne84")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ulkopaikkakuntalainen"]
+position = Vector2(712, 288)
+sprite_frames = SubResource("SpriteFrames_pkk4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ulkopaikkakuntalainen"]
+position = Vector2(1028, 324)
+shape = SubResource("RectangleShape2D_s24kv")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ulkopaikkakuntalainen"]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("5_n0gfk")
+
+[node name="Player" parent="." instance=ExtResource("6_uyg60")]
+position = Vector2(120, 248)
+
+[node name="Control" parent="." instance=ExtResource("7_ygy3l")]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="StaticBody2D" parent="." instance=ExtResource("8_d6t6x")]
+position = Vector2(456, 400)
+
+[node name="seagull" parent="." instance=ExtResource("9_yfux2")]
+position = Vector2(848, 120)
+
+[node name="seagull2" parent="." instance=ExtResource("9_yfux2")]
+position = Vector2(600, 40)
+
+[node name="seagull3" parent="." instance=ExtResource("9_yfux2")]
+position = Vector2(888, 40)

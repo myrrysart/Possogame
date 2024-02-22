@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://6oon1j2h6wjd"]
+
+[ext_resource type="Script" path="res://scripts/seagull.gd" id="1_kxjrp"]
+[ext_resource type="Texture2D" uid="uid://bhhlrtse5pdfc" path="res://art/seagull1.png" id="1_lr57u"]
+[ext_resource type="Texture2D" uid="uid://dlnecki14uo2s" path="res://art/seagull2.png" id="2_ia46f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auqm3"]
+size = Vector2(36, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5836"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lr57u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ia46f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u55sm"]
+size = Vector2(20, 4)
+
+[node name="seagull" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_kxjrp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 2)
+shape = SubResource("RectangleShape2D_auqm3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 24)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_y5836")
+
+[node name="seagullhitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="seagullhitbox"]
+position = Vector2(-22, -2)
+shape = SubResource("RectangleShape2D_u55sm")
+
+[connection signal="body_entered" from="seagullhitbox" to="." method="_on_area_2d_body_entered"]

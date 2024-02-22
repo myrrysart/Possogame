@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7vwsvsnt3je8"]
+
+[ext_resource type="Script" path="res://scripts/Button.gd" id="1_vpgjo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obl5a"]
+bg_color = Color(0.886275, 0.619608, 0.203922, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 11.0
+offset_right = 122.0
+offset_bottom = 89.0
+theme_override_colors/default_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+bbcode_enabled = true
+text = "Sugar:
+ 
+Apple jam:
+"
+
+[node name="sugarLevel" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 11.0
+offset_right = 232.0
+offset_bottom = 38.0
+
+[node name="appleJamLevel" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 56.0
+offset_right = 234.0
+offset_bottom = 83.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_obl5a")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 50.0
+offset_right = 787.0
+offset_bottom = 98.0
+text = "restart"
+script = ExtResource("1_vpgjo")

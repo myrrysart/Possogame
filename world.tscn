@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3yfwexniru86"]
+
+[ext_resource type="PackedScene" uid="uid://cgugn3bf4jeqc" path="res://player.tscn" id="2_xljqu"]
+[ext_resource type="PackedScene" uid="uid://d137knd1hxjhj" path="res://stages/stage_1.tscn" id="3_1aepp"]
+[ext_resource type="PackedScene" uid="uid://b7vwsvsnt3je8" path="res://control.tscn" id="3_nv8te"]
+[ext_resource type="PackedScene" uid="uid://l7cq6g4m1nvv" path="res://stages/stage_2.tscn" id="4_4im3s"]
+
+[node name="world" type="Node2D"]
+
+[node name="stage1" parent="." instance=ExtResource("3_1aepp")]
+position = Vector2(8, 83)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("2_xljqu")]
+position = Vector2(52, 354)
+safe_margin = 0.13
+metadata/_edit_lock_ = true
+
+[node name="Control" parent="." instance=ExtResource("3_nv8te")]
+offset_left = 35.0
+offset_top = 102.0
+offset_right = 35.0
+offset_bottom = 102.0
+metadata/_edit_lock_ = true
+
+[node name="stage2" parent="." instance=ExtResource("4_4im3s")]
+position = Vector2(5, 15)

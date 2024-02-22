@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7vwsvsnt3je8"]
+
+[ext_resource type="Script" path="res://scripts/Button.gd" id="1_vpgjo"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 11.0
+offset_right = 122.0
+offset_bottom = 89.0
+bbcode_enabled = true
+text = "Sugar:
+ 
+Apple jam:
+"
+
+[node name="sugarLevel" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 11.0
+offset_right = 232.0
+offset_bottom = 38.0
+
+[node name="appleJamLevel" type="ProgressBar" parent="."]
+offset_left = 116.0
+offset_top = 56.0
+offset_right = 234.0
+offset_bottom = 83.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_vpgjo")

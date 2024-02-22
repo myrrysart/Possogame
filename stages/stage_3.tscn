@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://ck6mw2sieby7m"]
+
+[ext_resource type="Texture2D" uid="uid://ch3cjqsqnfnyv" path="res://art/stage3.png" id="1_m2glu"]
+[ext_resource type="Script" path="res://scripts/ulkopaikkakuntalainen.gd" id="2_meetp"]
+[ext_resource type="Texture2D" uid="uid://c7noqyu386kss" path="res://art/animated man.png" id="3_5gb8a"]
+[ext_resource type="Texture2D" uid="uid://30pb5x1fyw1t" path="res://art/animated man2.png" id="4_y3fs5"]
+[ext_resource type="VideoStream" path="res://art/sample_960x400_ocean_with_audio.ogv" id="5_ynoac"]
+[ext_resource type="PackedScene" uid="uid://b7vwsvsnt3je8" path="res://control.tscn" id="6_0p3b0"]
+[ext_resource type="PackedScene" uid="uid://cgugn3bf4jeqc" path="res://player.tscn" id="7_4uccp"]
+[ext_resource type="PackedScene" uid="uid://cfdb7xkf8780w" path="res://rat.tscn" id="8_4143t"]
+[ext_resource type="PackedScene" uid="uid://6oon1j2h6wjd" path="res://seagull.tscn" id="9_2fbw0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xb0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5gb8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y3fs5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xynyc"]
+size = Vector2(54.9006, 62.6796)
+
+[node name="stage3" type="StaticBody2D"]
+
+[node name="Stage3" type="Sprite2D" parent="."]
+position = Vector2(573.5, 324)
+scale = Vector2(1.45718, 1.08361)
+texture = ExtResource("1_m2glu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(48, 216, 128, 184, 152, 88, 168, 176, 264, 208, 280, 88, 304, 368, 400, 368, 432, 88, 448, 368, 552, 368, 576, 104, 600, 368, 816, 360, 920, 440, 1048, 528, 1144, 528, 1144, 360, 1144, 8, 1160, 8, 1160, 648, -16, 648, -16, 0)
+
+[node name="ulkopaikkakuntalainen" type="Area2D" parent="."]
+position = Vector2(573.5, 324)
+scale = Vector2(1.45718, 1.08361)
+disable_mode = 2
+script = ExtResource("2_meetp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ulkopaikkakuntalainen"]
+position = Vector2(-36.7147, -136.581)
+sprite_frames = SubResource("SpriteFrames_8xb0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ulkopaikkakuntalainen"]
+position = Vector2(281.709, -107.05)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_xynyc")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ulkopaikkakuntalainen"]
+offset_left = -519.84
+offset_top = -513.1
+offset_right = 440.16
+offset_bottom = -113.1
+stream = ExtResource("5_ynoac")
+
+[node name="Control" parent="." instance=ExtResource("6_0p3b0")]
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 16.0
+
+[node name="Player" parent="." instance=ExtResource("7_4uccp")]
+position = Vector2(154, 48)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("8_4143t")]
+position = Vector2(680, 360)
+
+[node name="rat" parent="." instance=ExtResource("8_4143t")]
+position = Vector2(496, 344)
+
+[node name="seagull" parent="." instance=ExtResource("9_2fbw0")]
+position = Vector2(352, 240)
+
+[node name="seagull2" parent="." instance=ExtResource("9_2fbw0")]
+position = Vector2(1056, 56)
+
+[node name="seagull3" parent="." instance=ExtResource("9_2fbw0")]
+position = Vector2(1080, 160)

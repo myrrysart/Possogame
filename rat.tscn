@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfdb7xkf8780w"]
+
+[ext_resource type="Script" path="res://scripts/rat.gd" id="1_luusq"]
+[ext_resource type="Texture2D" uid="uid://djilyhbgjdmko" path="res://art/rat1.png" id="1_plmai"]
+[ext_resource type="Texture2D" uid="uid://6snydxag83u4" path="res://art/rat2.png" id="2_7qmfq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t27ra"]
+size = Vector2(11.4959, 27.5831)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_348wl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_plmai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7qmfq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="rat" type="CharacterBody2D"]
+script = ExtResource("1_luusq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.02352, -17.3677)
+rotation = -0.598648
+shape = SubResource("RectangleShape2D_t27ra")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -16)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_348wl")
+
+[node name="rathitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rathitbox"]
+position = Vector2(-4.86764, -11.4081)
+rotation = -0.598648
+scale = Vector2(1.1, 1.1)
+shape = SubResource("RectangleShape2D_t27ra")
+
+[connection signal="body_entered" from="rathitbox" to="." method="_on_area_2d_body_entered"]
